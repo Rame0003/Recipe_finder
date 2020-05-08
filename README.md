@@ -8,6 +8,12 @@
 * Data classification
 * Display results
 ----
+### To run the code:
+Please use the project3.ipynb file. The only inputs from the user side are 
+1. The file location
+2. User ingredients
+3. Number of recipes
+----
 ## Build dataframe / data cleansing:
 
 We load the data provided to us using the yummly.json file. I used to pandas library to load the json file into dataframe for ease of data storage and editing. The data is loaded using the following function:
