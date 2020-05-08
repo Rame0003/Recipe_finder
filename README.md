@@ -56,7 +56,7 @@ The data classification is performed using KNN. We have used KNN for our model b
 2. Process of training is much simple
 3. Easier to add more data
 
-With the computation complexity in mind, I performed the KNN classification on the train data. The cuisines for the recipes were used as labels for the train data. Once the data was trained, we obtained the model which can be used for prediction purpose. 
+With the above points, I felt that performing classification using KNN on the train data was lighter than using other methods such as MLP classifier which required much more time and energy for training the model. The cuisines for the recipes were used as labels for the train data. Once the data was trained, we obtained the model which can be used for prediction purpose. 
 
 For my example, I have taken k=11 after using the accuracy measure using the accuracy score module from the sklearn package. I used the following code to obtain the result:
 ```python
