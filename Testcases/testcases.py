@@ -30,7 +30,7 @@ def trained():
     df = recipe_finder.get_data(filename)
     data = 'thyme, basil'
     df = recipe_finder.get_user_ing(data, df)
-    test, mod = recipe_finder.train_data(df, 8)
+    test, mod = recipe_finder.train_data(df)
     assert test is not None
 
 def out():
@@ -38,7 +38,6 @@ def out():
     df = recipe_finder.get_data(filename)
     data = 'thyme, basil'
     df = recipe_finder.get_user_ing(data, df)
-    test, mod = recipe_finder.train_data(df, 8)
-    recipe_finder.get_results(test, model)
+    test, mod = recipe_finder.train_data(df)
+    recipe_finder.get_results(test, model, 5)
     
-
