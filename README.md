@@ -80,3 +80,4 @@ Recipe No: 18735 (1.059071 probable match)
 * https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier
 * https://stackoverflow.com/questions/10695139/sort-a-list-of-tuples-by-2nd-item-integer-value
 * https://www.python-course.eu/k_nearest_neighbor_classifier.php
+* https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
