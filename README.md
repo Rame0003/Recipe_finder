@@ -51,62 +51,58 @@ The data classification is performed using KNN. We have used KNN for our model b
 
 With the computation complexity in mind, I performed the KNN classification on the train data. The cuisines for the recipes were used as labels for the train data. Once the data was trained, we obtained the model which can be used for prediction purpose. 
 
-For my example, I have taken 8 clusters and thus it will display 8 recipes. The reason for taking 8 clusters is that I felt that it classifies the cuisines much clearly. Given below is an example for the difference between taking 5 clusters and 8 clusters.
-
-With 5 clusters:
-``` python
-df = get_user_ing('thyme, basil', df)
-test, mod = train_data(df, 5)
-get_results(test, mod)
+For my example, I have taken k=11 after using the accuracy measure using the accuracy score module from the sklearn package. I used the following code to obtain the result:
+```python
+for K in range(22):
+    K_value = K+1
+    neigh = KNeighborsClassifier(n_neighbors = K_value, weights='uniform', algorithm='auto', metric='minkowski')
+    neigh.fit(X_train,y_train)
+    y_pred = neigh.predict(X_test)
+    print("Accuracy is ", accuracy_score(y_test,y_pred)*100,"% for K-Value:",K_value)
+    
 ```
+Given below are the results:
 ```output
-The model predicts that the ingredients resembles french (40.000000 resemblence)
-
-Recipe No: 38052 (0.995421 probable match)
-Recipe No: 33387 (1.014186 probable match)
-Recipe No: 16446 (1.042872 probable match)
-Recipe No: 21589 (1.074481 probable match)
-Recipe No: 24719 (1.077459 probable match)
-
+Accuracy is  58.75 % for K-Value: 1
+Accuracy is  53.75 % for K-Value: 2
+Accuracy is  59.0 % for K-Value: 3
+Accuracy is  59.5 % for K-Value: 4
+Accuracy is  60.75000000000001 % for K-Value: 5
+Accuracy is  61.0 % for K-Value: 6
+Accuracy is  61.75000000000001 % for K-Value: 7
+Accuracy is  62.0 % for K-Value: 8
+Accuracy is  62.25000000000001 % for K-Value: 9
+Accuracy is  64.0 % for K-Value: 10
+**Accuracy is  64.5 % for K-Value: 11**
+Accuracy is  63.24999999999999 % for K-Value: 12
+Accuracy is  62.74999999999999 % for K-Value: 13
+Accuracy is  62.74999999999999 % for K-Value: 14
+Accuracy is  62.25000000000001 % for K-Value: 15
+Accuracy is  63.0 % for K-Value: 16
+Accuracy is  63.24999999999999 % for K-Value: 17
+Accuracy is  63.24999999999999 % for K-Value: 18
+Accuracy is  62.5 % for K-Value: 19
+Accuracy is  63.24999999999999 % for K-Value: 20
+Accuracy is  61.75000000000001 % for K-Value: 21
+Accuracy is  61.0 % for K-Value: 22
 ```
-
-From the above result, we can clearly say that thyme and basil are more prominent in Italian cuisine rather than French cuisine
-``` python
-df = get_user_ing('thyme, basil', df)
-test, mod = train_data(df, 8)
-get_results(test, mod)
-```
-```output
-The model predicts that the ingredients resembles italian (62.500000 resemblence)
-
-Recipe No: 38052 (0.995421 probable match)
-Recipe No: 33387 (1.014186 probable match)
-Recipe No: 16446 (1.042872 probable match)
-Recipe No: 21589 (1.074481 probable match)
-Recipe No: 24719 (1.077459 probable match)
-Recipe No: 39031 (1.080288 probable match)
-Recipe No: 6651 (1.084373 probable match)
-Recipe No: 8241 (1.084596 probable match)
-```
+We can see that the  accuracy for a k-value of 11 is higher than the other values. Hence, I have decided to take 11 as the k-value.
 
 ## Display results:
 
-Once the classification has been performed, the test data is provided and the prediction is performed. I have chosen to take **8 clusters**. The number of clusters can be varied and thus the number of recipes that are obtained is also varied along with it. The input to display the results are as follows:
+Once the classification has been performed, the test data is provided and the prediction is performed. We can provide the test ingredient vector matrix, the trained model and the number of ingredients that we want to the function. The input to display the results are as follows:
 ````python
-get_results(test, model)
+get_results(test, model, n)
 ````
-With the above function, we obtain the results according to the number of clusters. 
+With the above function, we obtain the results according to the given user input. Care should be taken that the number of recipes are limited to the K-value provided. 
 ```output
-The model predicts that the ingredients resembles greek (62.500000 resemblence)
+The model predicts that the ingredients resembles indian (54.545455 resemblence)
 
-Recipe No: 1054 (0.836774 probable match)
-Recipe No: 17211 (0.995302 probable match)
-Recipe No: 21868 (0.999627 probable match)
-Recipe No: 26480 (1.021242 probable match)
-Recipe No: 33873 (1.054992 probable match)
-Recipe No: 10051 (1.056956 probable match)
-Recipe No: 36251 (1.058794 probable match)
-Recipe No: 18735 (1.059071 probable match)
+Recipe No: 37573 (0.882196 probable match)
+Recipe No: 29693 (0.974139 probable match)
+Recipe No: 13518 (1.005656 probable match)
+Recipe No: 20178 (1.009164 probable match)
+Recipe No: 11906 (1.057354 probable match)
 ```
 
 ------
