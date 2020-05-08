@@ -7,6 +7,7 @@
 * Feature extraction from dataset
 * Data classification
 * Display results
+* Testcases
 ----
 ### To run the code:
 Please use the project3.ipynb file. The only inputs from the user side are 
@@ -110,6 +111,8 @@ Recipe No: 13518 (1.005656 probable match)
 Recipe No: 20178 (1.009164 probable match)
 Recipe No: 11906 (1.057354 probable match)
 ```
+## Testcases:
+The testcase files can be found in the Testcase folder in the same repository.
 
 ------
 ## References:
