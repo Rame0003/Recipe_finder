@@ -7,7 +7,6 @@
 * Feature extraction from dataset
 * Data classification
 * Display results
-* Testcases 
 ----
 ## Build dataframe / data cleansing:
 
@@ -28,11 +27,49 @@ Once the string conversion is done, we proceed to the next step where we request
 ``` python
 get_user_ing(df, 'string_of_ingredients')
 ```
-
+The input has to be a set of strings separated by commas such as the following example:
+> 'ing_1, ing_2, ing_3'
+Once the dataframe and string is passed into the function, the string is parsed into the dataframe and the dataframe is all set for extracting the feature matrix using the TF-IDF vectorizer.
 
 ## Feature extraction from dataset:
 
-We will begin the process of feature extraction by 
+We will begin the process of feature extraction by obtaining the dataframe into the function as follows:
+``` python
+train_data(df)
+```
+With the above function, what we do is that we extract the features using the TF-IDF nlp extraction model. The model is specifically chosen as it does a better job at analysing the importance of each ingredient in the distinct cuisines. Once the vectorization process is performed, we obtain the dense matrix. The dense matrix is the split into test and train dataset. We will be using the K-Nearest Neighbors classification algorithm for the classification part. 
+
+The dense matrix is split into train and test. The test contains the matirx related to only the new additional ingredients. The train matirx contains all the other recipes provided by the dataset. We use this data to train the model and predict the cuisine for the given ingredients. 
+
+## Data classification:
+
+The data classification is performed using KNN. We have used KNN for our model because:
+
+1. KNN is relatively simple to implement
+2. Process of training is much simple
+3. Easier to add more data
+
+With the computation complexity in mind, I performed the KNN classification on the train data. The cuisines for the recipes were used as labels for the train data. Once the data was trained, we obtained the model which can be used for prediction purpose. 
+
+## Display results:
+
+Once the classification has been performed, the test data is provided and the prediction is performed. I have chosen to take 5 clusters after several trial and error results. The number of clusters can be varied and thus the number of recipes that are obtained is also varied along with it. The input to display the results are as follows:
+````python
+get_results(test, model)
+````
+With the above function, we obtain the results according to the number of clusters. For my example, I have taken 8 clusters and thus it will display 8 recipes. 
+```output
+The model predicts that the ingredients resembles greek (62.500000 resemblence)
+
+Recipe No: 1054 (0.836774 probable match)
+Recipe No: 17211 (0.995302 probable match)
+Recipe No: 21868 (0.999627 probable match)
+Recipe No: 26480 (1.021242 probable match)
+Recipe No: 33873 (1.054992 probable match)
+Recipe No: 10051 (1.056956 probable match)
+Recipe No: 36251 (1.058794 probable match)
+Recipe No: 18735 (1.059071 probable match)
+```
 
 ------
 ## References:
@@ -41,3 +78,5 @@ We will begin the process of feature extraction by
 * https://www.quora.com/How-is-the-k-nearest-neighbor-algorithm-different-from-k-means-clustering
 * https://datascienceplus.com/k-nearest-neighbors-knn-with-python/
 * https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier
+* https://stackoverflow.com/questions/10695139/sort-a-list-of-tuples-by-2nd-item-integer-value
+* https://www.python-course.eu/k_nearest_neighbor_classifier.php
