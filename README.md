@@ -55,6 +55,7 @@ For my example, I have taken 8 clusters and thus it will display 8 recipes. The 
 
 With 5 clusters:
 ``` python
+df = get_user_ing('thyme, basil', df)
 test, mod = train_data(df, 5)
 get_results(test, mod)
 ```
@@ -71,6 +72,7 @@ Recipe No: 24719 (1.077459 probable match)
 
 From the above result, we can clearly say that thyme and basil are more prominent in Italian cuisine rather than French cuisine
 ``` python
+df = get_user_ing('thyme, basil', df)
 test, mod = train_data(df, 8)
 get_results(test, mod)
 ```
