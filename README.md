@@ -99,17 +99,18 @@ We can see that the  accuracy for a k-value of 11 is higher than the other value
 
 Once the classification has been performed, the test data is provided and the prediction is performed. We can provide the test ingredient vector matrix, the trained model and the number of ingredients that we want to the function. The input to display the results are as follows:
 ````python
-get_results(test, model, n)
+df = get_user_ing('feta cheese, ground turkey', df)
+get_results(test, model, 5)
 ````
 With the above function, we obtain the results according to the given user input. Care should be taken that the number of recipes are limited to the K-value provided. 
 ```output
-The model predicts that the ingredients resembles indian (54.545455 resemblence)
+The model predicts that the ingredients resembles greek (72.727273 resemblence)
 
-Recipe No: 37573 (0.882196 probable match)
-Recipe No: 29693 (0.974139 probable match)
-Recipe No: 13518 (1.005656 probable match)
-Recipe No: 20178 (1.009164 probable match)
-Recipe No: 11906 (1.057354 probable match)
+Recipe No: 1054 (0.836774 probable match)
+Recipe No: 17211 (0.995302 probable match)
+Recipe No: 21868 (0.999627 probable match)
+Recipe No: 26480 (1.021242 probable match)
+Recipe No: 33873 (1.054992 probable match)
 ```
 ## Testcases:
 The testcase files can be found in the Testcase folder in the same repository.
