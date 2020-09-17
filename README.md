@@ -1,5 +1,4 @@
-# CS 5293 Spring 2020 Project 3
-## Cuisine/Recipe Finder
+# Cuisine/Recipe Finder
 ### By Abilash Ramesh
 -------
 ## Contents:
